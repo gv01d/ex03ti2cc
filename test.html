@@ -1,0 +1,231 @@
+<html data-lt-installed="true">
+
+<head>
+	<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+
+	<title>Controle de Estoque</title>
+	<script type="text/javascript">
+
+		function confirmarDeleteJogo(id, descricao, preco) {
+
+			if (confirm('Confirmar a exclusão do jogo [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {
+				location.href = '/jogo/delete/' + id;
+			}
+		}
+		function onLoad() {
+			if (document.getElementById("msg").value != "") {
+				alert(document.getElementById("msg").value);
+			}
+		}
+	</script>
+</head>
+
+
+
+
+<body>
+	<div onload="onLoad()" cz-shortcut-listen="true" class="main">
+		<h1>Controle de Estoque</h1>
+		<input type="hidden" id="msg" name="msg" value="Jogo (2) excluído!">
+		<form class="form--register" action="/jogo/insert" method="post" id="form-add">
+			<table class="tab1" width="100%" bgcolor="#f3f3f3" align="center">
+				<tbody>
+					<tr>
+						<td colspan="3" align="left">
+							<font size="+2"><b>&nbsp;&nbsp;&nbsp;Inserir Jogo</b></font>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="left">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;Descrição: <input class="input--register" type="text" name="descricao"
+								value="leite, pão, ..."></td>
+						<td>Preco: <input class="input--register" type="text" name="preco" value="0.0"></td>
+						<td>Quantidade: <input class="input--register" type="text" name="quantidade" value="0"></td>
+					</tr>
+					<tr>
+						<td>&nbsp;Data de fabricação: <input class="input--register" type="text" name="dataFabricacao"
+								value="2024-03-14T20:26:42"></td>
+						<td align="center"><input type="submit" value="Inserir"
+								class="input--main__style input--button">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<table class="tab2" width="100%" align="center" bgcolor="#f3f3f3">
+			<tbody>
+				<tr>
+					<td colspan="6" align="left">
+						<font size="+2"><b>&nbsp;&nbsp;&nbsp;Relação de Jogos</b></font>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="6">&nbsp;</td>
+				</tr>
+
+				<tr>
+					<td><a href="/jogo/list/1"><b>ID</b></a></td>
+					<td><a href="/jogo/list/2"><b>Descrição</b></a></td>
+					<td><a href="/jogo/list/3"><b>Preço</b></a></td>
+					<td width="100" align="center"><b>Detalhar</b></td>
+					<td width="100" align="center"><b>Atualizar</b></td>
+					<td width="100" align="center"><b>Excluir</b></td>
+				</tr>
+
+				<tr class="out">
+					<td>1</td>
+					<td>test</td>
+					<td>20.0</td>
+					<td align="center" valign="middle"><a href="/jogo/1"><img src="/image/detail.png" width="20"
+								height="20"></a></td>
+					<td align="center" valign="middle"><a href="/jogo/update/1"><img src="/image/update.png" width="20"
+								height="20"></a></td>
+					<td align="center" valign="middle"><a
+							href="javascript:confirmarDeleteJogo('1', 'test', '20.0');"><img src="/image/delete.png"
+								width="20" height="20"></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: rgb(42, 51, 56);
+		}
+
+		h1 {
+			text-align: center;
+			color: rgb(253, 41, 76);
+			font-weight: bold;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		form {
+			margin: 0;
+		}
+
+		.main {
+			background-color: rgb(11, 97, 90);
+			padding: 5px 40px;
+			height: 100%;
+			border-radius: 5px;
+			margin: 5px 50px;
+		}
+
+		.tab1 {
+			border-top: rgb(253, 41, 76) 10px;
+			border-top-style: solid;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			background-color: white;
+			padding: 0px 10px;
+		}
+
+		.tab2 {
+			background-color: white;
+			border-top: rgb(11, 97, 90) dashed;
+			padding: 0px 10px;
+			padding-bottom: 10px;
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+
+
+		.input--main__style {
+			background-color: #38df6a;
+		}
+
+		.input--button {
+			font-weight: bold;
+			font-family: Arial;
+			font-size: medium;
+			border-color: transparent;
+			display: block;
+			margin: 0px auto;
+			margin-bottom: 10px;
+			color: white;
+		}
+
+		.input--register {
+			display: inline;
+		}
+
+		table {
+			border: none;
+		}
+
+		.out {
+			background-color: rgb(11, 97, 90);
+			width: 100%;
+			margin: 0;
+			border: 0;
+			padding: 0;
+
+		}
+
+		.out td {
+			color: rgb(248, 59, 91);
+			font-weight: bold;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			margin: 0;
+			border: 0;
+			padding: 0;
+		}
+
+		td {
+			color: rgb(247, 165, 57);
+		}
+
+		b {
+			text-align: center;
+			color: rgb(253, 41, 76);
+			font-weight: bold;
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		}
+
+		tbody b {
+			color: rgb(247, 165, 57);
+		}
+
+		tbody font b {
+			color: rgb(253, 41, 76);
+		}
+
+		input {
+			display: block;
+			border-radius: 7px;
+			padding: 10px;
+			border-style: solid;
+			border-color: rgb(253, 41, 76);
+			color: black;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+
+		form p {
+			text-align: initial;
+			display: inline;
+			margin-left: 15px;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.p--nomargin {
+			margin-left: 0px;
+			margin-right: 10px;
+		}
+	</style>
+
+
+
+</body>
+
+</html>
